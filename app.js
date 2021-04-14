@@ -8,6 +8,9 @@ const shopRoutes = require('./routes/shop')
 
 const errorController = require('./controllers/error')
 
+const rootDir = require('./utils/path')
+
+
 const app = express()
 
 // setting the default template engine
@@ -19,7 +22,8 @@ app.set('views', 'views')
 app.use(express.urlencoded({extended: false})) // this is for body parsing
 
 // this gives you access to the public folder in the porject
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(rootDir, 'public')))
 
 app.use('/admin', adminRoute) // page for admin
 app.use(shopRoutes) // page for shops
